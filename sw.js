@@ -1,5 +1,5 @@
-/* Folha Norte — service worker. App shell offline; sem rede em uso normal. */
-const CACHE = "folha-norte-v1";
+/* Rumo — service worker. App shell offline; sem rede em uso normal. */
+const CACHE = "rumo-v1";
 const SHELL = [
   ".", "index.html", "styles.css", "app.js", "i18n.js", "manifest.json",
   "icons/icon-192.png", "icons/icon-512.png"

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Folha Norte</title>
-<meta name="description" content="Uma folha para definir a tua direção a um ano e revê-la uma vez por mês — nem antes, nem depois." />
+<title>Rumo</title>
+<meta name="description" content="Rumo: traça o teu caminho a longo prazo e o foco da tua semana. Cada um revê-se no seu próprio tempo." />
 <meta name="theme-color" content="#10151C" />
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2310151C'/%3E%3Cpath d='M16 4 L20 16 L16 28 L12 16 Z' fill='%23C8402E'/%3E%3C/svg%3E" />
@@ -34,7 +34,7 @@
     </div>
     <div class="band-text">
       <p class="eyebrow" data-i18n="eyebrow">Direção pessoal · revisão mensal</p>
-      <h1 data-i18n="title">Folha Norte</h1>
+      <h1 data-i18n="title">Rumo</h1>
       <p class="lede" data-i18n="lede">Define onde estás e onde queres chegar a um ano. Depois fecha a folha e segue o rumo — só se muda no dia de revisão.</p>
     </div>
     <div class="band-controls">
@@ -48,8 +48,8 @@
     </div>
   </div>
   <nav class="tabs no-print" role="tablist">
-    <button type="button" id="tab-norte" class="tab is-active" role="tab" aria-selected="true" data-i18n="tabNorte">Folha Norte</button>
-    <button type="button" id="tab-projeto" class="tab" role="tab" aria-selected="false" data-i18n="tabProjeto">Folha Projeto</button>
+    <button type="button" id="tab-norte" class="tab is-active" role="tab" aria-selected="true" data-i18n="tabNorte">Rumo</button>
+    <button type="button" id="tab-projeto" class="tab" role="tab" aria-selected="false" data-i18n="tabProjeto">Foco</button>
   </nav>
 </header>
 
@@ -59,7 +59,7 @@
   <!-- ESTADO: sem folha ainda -->
   <section id="view-empty" class="sheet" hidden>
     <p class="sheet-kicker" data-i18n="emptyKicker">Nada traçado ainda</p>
-    <h2 data-i18n="emptyTitle">Começa a tua Folha Norte</h2>
+    <h2 data-i18n="emptyTitle">Começa o teu Rumo</h2>
     <p class="prose" data-i18n="emptyBody">Escreve à mão primeiro se puderes — é assim que as ideias ganham forma. Esta folha guarda o mesmo, para consultares e reveres. Uma vez traçada, fica fechada até ao teu dia de revisão.</p>
     <div class="field">
       <label data-i18n="horizonLabel">Horizonte da projeção</label>
@@ -76,7 +76,7 @@
       <p class="hint" data-i18n="reviewDayHint">Sugestão: dia 22. Fora deste dia não podes alterar o plano — é a blindagem contra a fuga e a procrastinação.</p>
       <input type="number" id="setup-review-day" min="1" max="28" value="22" inputmode="numeric" />
     </div>
-    <button type="button" id="btn-create" class="btn btn-primary" data-i18n="createBtn">Traçar a folha</button>
+    <button type="button" id="btn-create" class="btn btn-primary" data-i18n="createBtn">Traçar o rumo</button>
   </section>
 
   <!-- ESTADO: folha existente -->
@@ -85,7 +85,7 @@
     <div id="lock-banner" class="banner" role="status"></div>
 
     <p class="sheet-kicker">
-      <span data-i18n="sheetKicker">Folha traçada em</span>
+      <span data-i18n="sheetKicker">Traçado em</span>
       <span id="created-at" class="mono"></span>
     </p>
 
@@ -265,7 +265,7 @@
     <textarea id="em-reason" data-i18n-ph="dlgEmPh" placeholder="O facto novo é…" required minlength="40"></textarea>
     <div class="row">
       <button value="cancel" class="btn btn-ghost" data-i18n="cancelBtn">Cancelar</button>
-      <button value="ok" class="btn btn-primary" data-i18n="dlgEmOk">Abrir a folha</button>
+      <button value="ok" class="btn btn-primary" data-i18n="dlgEmOk">Abrir o rumo</button>
     </div>
   </form>
 </dialog>

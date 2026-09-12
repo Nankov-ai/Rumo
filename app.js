@@ -1,15 +1,15 @@
-/* Folha Norte — lógica da aplicação.
+/* Rumo — lógica da aplicação.
    Sem framework, sem build. Estado em localStorage, só neste dispositivo. */
 (() => {
   "use strict";
 
-  const K_FOLHA = "fn.folha";
-  const K_CONFIG = "fn.config";
-  const K_LANG = "fn.lang";
-  const K_TAB = "fn.tab";
-  const K_PROJETO = "fn.projeto";
-  const K_ARCHIVE = "fn.projeto.archive";
-  const K_PENDENTES = "fn.pendentes";
+  const K_FOLHA = "rumo.folha";
+  const K_CONFIG = "rumo.config";
+  const K_LANG = "rumo.lang";
+  const K_TAB = "rumo.tab";
+  const K_PROJETO = "rumo.projeto";
+  const K_ARCHIVE = "rumo.projeto.archive";
+  const K_PENDENTES = "rumo.pendentes";
 
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -252,10 +252,10 @@
   }
 
   function exportCopy() {
-    const blob = new Blob([JSON.stringify({ _app: "folha-norte", v: 2, config, folha, projeto, pendentes, archive }, null, 2)], { type: "application/json" });
+    const blob = new Blob([JSON.stringify({ _app: "rumo", v: 3, config, folha, projeto, pendentes, archive }, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = `folha-norte-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `rumo-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(a.href);
   }
@@ -265,7 +265,8 @@
     r.onload = () => {
       try {
         const data = JSON.parse(r.result);
-        if (data._app !== "folha-norte" || !data.folha || !data.folha.createdAt) throw 0;
+        // aceita também exportações antigas ("folha-norte", antes do rename)
+        if ((data._app !== "rumo" && data._app !== "folha-norte") || !data.folha || !data.folha.createdAt) throw 0;
         config = data.config || { reviewDay: 22 };
         folha = data.folha;
         projeto = data.projeto || null;
@@ -291,7 +292,7 @@
     $("#setup-review-day").value = 22;
   }
 
-  // ---- Folha Projeto (semanal) ----
+  // ---- Foco (semanal) ----
   function mondayOf(d) {
     const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
     const day = x.getDay(); // 0 dom .. 6 sáb

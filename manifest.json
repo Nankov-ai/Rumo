@@ -1,7 +1,7 @@
 {
-  "name": "Folha Norte",
-  "short_name": "Folha Norte",
-  "description": "Define onde estás e onde queres chegar a um ano. Revê uma vez por mês — nem antes, nem depois.",
+  "name": "Rumo",
+  "short_name": "Rumo",
+  "description": "Traça o teu caminho a longo prazo e o foco da tua semana. Revê cada um no seu próprio tempo.",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",

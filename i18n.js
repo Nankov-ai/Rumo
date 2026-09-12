@@ -1,24 +1,24 @@
-/* Folha Norte — traduções.
+/* Rumo — traduções.
    Acrescentar uma língua = acrescentar uma chave de topo com o mesmo conjunto de campos. */
 window.I18N = {
   pt: {
     _label: "Português (Portugal)",
     skip: "Saltar para a folha",
     eyebrow: "Direção anual · foco semanal",
-    title: "Folha Norte",
-    lede: "A Folha Norte traça o teu rumo a longo prazo. A Folha Projeto foca a tua semana. Cada uma revê-se no seu próprio tempo — nem antes, nem depois.",
+    title: "Rumo",
+    lede: "O Rumo traça o teu caminho a longo prazo. O Foco organiza a tua semana. Cada um revê-se no seu próprio tempo — nem antes, nem depois.",
     langLabel: "Idioma",
-    tabNorte: "Folha Norte",
-    tabProjeto: "Folha Projeto",
+    tabNorte: "Rumo",
+    tabProjeto: "Foco",
 
     emptyKicker: "Nada traçado ainda",
-    emptyTitle: "Começa a tua Folha Norte",
+    emptyTitle: "Começa o teu Rumo",
     emptyBody: "Escreve à mão primeiro se puderes — é assim que as ideias ganham forma. Esta folha guarda o mesmo, para consultares e reveres. Uma vez traçada, fica fechada até ao teu dia de revisão.",
     reviewDayLabel: "Dia de revisão de cada mês",
     reviewDayHint: "Sugestão: dia 22. Fora deste dia não podes alterar o plano — é a blindagem contra a fuga e a procrastinação.",
-    createBtn: "Traçar a folha",
+    createBtn: "Traçar o rumo",
 
-    sheetKicker: "Folha traçada em",
+    sheetKicker: "Traçado em",
     horizonLabel: "Horizonte da projeção",
     horizonHint: "A que distância no tempo queres chegar? Escolhe dias, semanas, meses ou anos.",
     horizonPrefix: "Projeção para",
@@ -46,7 +46,7 @@ window.I18N = {
 
     saveBtn: "Guardar alterações",
     savedAt: "guardado",
-    lockedSave: "A folha está fechada hoje — não é possível guardar alterações ao plano.",
+    lockedSave: "Está fechado hoje — não é possível guardar alterações ao plano.",
 
     reflectTitle: "Entre revisões",
     reflectBody: "Não podes mudar o rumo hoje, mas podes registar o que estás a observar. Fica no histórico para o dia da revisão.",
@@ -69,22 +69,22 @@ window.I18N = {
     dlgEmTitle: "Desbloqueio de emergência",
     dlgEmBody: "A blindagem existe para te proteger da fuga. Só a abre um facto novo real — perda de emprego, uma oportunidade concreta com prazo. Não a abre \"mudei de ideias\". Descreve o facto: fica no histórico.",
     dlgEmPh: "O facto novo é…",
-    dlgEmOk: "Abrir a folha",
+    dlgEmOk: "Abrir o rumo",
 
     exportBtn: "Exportar cópia",
     importBtn: "Importar cópia",
     printBtn: "Imprimir folha A4",
     resetBtn: "Apagar tudo",
-    resetConfirm: "Apagar a folha e todo o histórico deste dispositivo? Não há como voltar atrás.",
-    importBad: "Esse ficheiro não é uma Folha Norte válida.",
+    resetConfirm: "Apagar o rumo e todo o histórico deste dispositivo? Não há como voltar atrás.",
+    importBad: "Esse ficheiro não é um Rumo válido.",
     importOk: "Cópia importada.",
 
     footNote: "Tudo fica só neste dispositivo. Exporta uma cópia de vez em quando.",
 
-    lockOpenReview: "Hoje é dia de revisão. A folha está aberta — revê o rumo e guarda.",
-    lockOpenEmergency: "Folha aberta por desbloqueio de emergência. Guarda as alterações necessárias.",
-    lockClosed: "Folha fechada. Próxima revisão: dia {day} ({days} dias).",
-    lockClosedTomorrow: "Folha fechada. A próxima revisão é amanhã.",
+    lockOpenReview: "Hoje é dia de revisão. Está aberto — revê o rumo e guarda.",
+    lockOpenEmergency: "Aberto por desbloqueio de emergência. Guarda as alterações necessárias.",
+    lockClosed: "Fechado. Próxima revisão: dia {day} ({days} dias).",
+    lockClosedTomorrow: "Fechado. A próxima revisão é amanhã.",
     dayNames: ["domingo","segunda","terça","quarta","quinta","sexta","sábado"],
 
     projKicker: "Semana de {start} a {end}",
@@ -121,20 +121,20 @@ window.I18N = {
     _label: "English",
     skip: "Skip to the sheet",
     eyebrow: "Yearly direction · weekly focus",
-    title: "Folha Norte",
-    lede: "Folha Norte charts your long-term course. Folha Projeto focuses your week. Each one is reviewed on its own schedule — no earlier, no later.",
+    title: "Rumo",
+    lede: "Rumo charts your long-term course. Foco organises your week. Each one is reviewed on its own schedule — no earlier, no later.",
     langLabel: "Language",
-    tabNorte: "Folha Norte",
-    tabProjeto: "Folha Projeto",
+    tabNorte: "Course",
+    tabProjeto: "Focus",
 
     emptyKicker: "Nothing charted yet",
-    emptyTitle: "Start your Folha Norte",
+    emptyTitle: "Start your Rumo",
     emptyBody: "Write it by hand first if you can — that's how ideas take shape. This sheet holds the same, to revisit and review. Once charted, it stays closed until your review day.",
     reviewDayLabel: "Review day each month",
     reviewDayHint: "Suggested: the 22nd. On any other day you can't change the plan — that's the shield against avoidance and procrastination.",
-    createBtn: "Chart the sheet",
+    createBtn: "Chart your course",
 
-    sheetKicker: "Sheet charted on",
+    sheetKicker: "Charted on",
     horizonLabel: "Projection horizon",
     horizonHint: "How far ahead are you aiming? Choose days, weeks, months or years.",
     horizonPrefix: "Projection over",
@@ -162,7 +162,7 @@ window.I18N = {
 
     saveBtn: "Save changes",
     savedAt: "saved",
-    lockedSave: "The sheet is closed today — changes to the plan can't be saved.",
+    lockedSave: "It's closed today — changes to the plan can't be saved.",
 
     reflectTitle: "Between reviews",
     reflectBody: "You can't change course today, but you can log what you're seeing. It waits in the history for review day.",
@@ -185,22 +185,22 @@ window.I18N = {
     dlgEmTitle: "Emergency unlock",
     dlgEmBody: "The shield exists to protect you from avoidance. Only a real new fact opens it — job loss, a concrete opportunity with a deadline. \"I changed my mind\" doesn't. Describe the fact: it stays in the history.",
     dlgEmPh: "The new fact is…",
-    dlgEmOk: "Open the sheet",
+    dlgEmOk: "Open it",
 
     exportBtn: "Export a copy",
     importBtn: "Import a copy",
     printBtn: "Print A4 sheet",
     resetBtn: "Delete everything",
-    resetConfirm: "Delete the sheet and all history from this device? There's no undo.",
-    importBad: "That file isn't a valid Folha Norte.",
+    resetConfirm: "Delete this course and all history from this device? There's no undo.",
+    importBad: "That file isn't a valid Rumo.",
     importOk: "Copy imported.",
 
     footNote: "Everything stays on this device only. Export a copy now and then.",
 
-    lockOpenReview: "Today is review day. The sheet is open — review the course and save.",
-    lockOpenEmergency: "Sheet opened by emergency unlock. Save the changes you need.",
-    lockClosed: "Sheet closed. Next review: day {day} ({days} days).",
-    lockClosedTomorrow: "Sheet closed. The next review is tomorrow.",
+    lockOpenReview: "Today is review day. It's open — review your course and save.",
+    lockOpenEmergency: "Opened by emergency unlock. Save the changes you need.",
+    lockClosed: "Closed. Next review: day {day} ({days} days).",
+    lockClosedTomorrow: "Closed. The next review is tomorrow.",
     dayNames: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
 
     projKicker: "Week of {start} to {end}",
