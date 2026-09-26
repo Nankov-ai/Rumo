@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rumo</title>
+<meta name="description" content="Rumo: traça o teu caminho a longo prazo e o foco da tua semana. Cada um revê-se no seu próprio tempo." />
+<meta name="theme-color" content="#10151C" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2310151C'/%3E%3Cpath d='M16 4 L20 16 L16 28 L12 16 Z' fill='%23C8402E'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#folha" data-i18n="skip">Saltar para a folha</a>
+
+<header class="compass-band">
+  <div class="band-inner">
+    <div class="compass" aria-hidden="true">
+      <svg viewBox="0 0 120 120" class="compass-svg">
+        <circle cx="60" cy="60" r="54" class="ring-outer" />
+        <circle cx="60" cy="60" r="44" class="ring-inner" />
+        <g class="ticks"></g>
+        <text x="60" y="19" class="cardinal">N</text>
+        <g class="needle">
+          <path d="M60 22 L67 60 L60 66 L53 60 Z" class="needle-north" />
+          <path d="M60 98 L53 60 L60 54 L67 60 Z" class="needle-south" />
+        </g>
+        <circle cx="60" cy="60" r="4.5" class="hub" />
+      </svg>
+    </div>
+    <div class="band-text">
+      <p class="eyebrow" data-i18n="eyebrow">Direção pessoal · revisão mensal</p>
+      <h1 data-i18n="title">Rumo</h1>
+      <p class="lede" data-i18n="lede">Define onde estás e onde queres chegar a um ano. Depois fecha a folha e segue o rumo — só se muda no dia de revisão.</p>
+    </div>
+    <div class="band-controls">
+      <label class="lang" for="lang">
+        <span class="visually-hidden" data-i18n="langLabel">Idioma</span>
+        <select id="lang">
+          <option value="pt">PT</option>
+          <option value="en">EN</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <nav class="tabs no-print" role="tablist">
+    <button type="button" id="tab-norte" class="tab is-active" role="tab" aria-selected="true" data-i18n="tabNorte">Rumo</button>
+    <button type="button" id="tab-projeto" class="tab" role="tab" aria-selected="false" data-i18n="tabProjeto">Foco</button>
+  </nav>
+</header>
+
+<main id="folha">
+
+<div id="pane-norte">
+  <!-- ESTADO: sem folha ainda -->
+  <section id="view-empty" class="sheet" hidden>
+    <p class="sheet-kicker" data-i18n="emptyKicker">Nada traçado ainda</p>
+    <h2 data-i18n="emptyTitle">Começa o teu Rumo</h2>
+    <p class="prose" data-i18n="emptyBody">Escreve à mão primeiro se puderes — é assim que as ideias ganham forma. Esta folha guarda o mesmo, para consultares e reveres. Uma vez traçada, fica fechada até ao teu dia de revisão.</p>
+    <div class="field">
+      <label data-i18n="horizonLabel">Horizonte da projeção</label>
+      <p class="hint" data-i18n="horizonHint">A que distância no tempo queres chegar? Escolhe dias, semanas, meses ou anos.</p>
+      <div class="horizon">
+        <span data-i18n="horizonPrefix">Projeção para</span>
+        <input type="number" id="setup-horizon-n" min="1" max="999" value="1" inputmode="numeric" />
+        <select id="setup-horizon-unit" data-units></select>
+        <span class="horizon-date mono" id="setup-horizon-date"></span>
+      </div>
+    </div>
+    <div class="field">
+      <label for="setup-review-day" data-i18n="reviewDayLabel">Dia de revisão de cada mês</label>
+      <p class="hint" data-i18n="reviewDayHint">Sugestão: dia 22. Fora deste dia não podes alterar o plano — é a blindagem contra a fuga e a procrastinação.</p>
+      <input type="number" id="setup-review-day" min="1" max="28" value="22" inputmode="numeric" />
+    </div>
+    <button type="button" id="btn-create" class="btn btn-primary" data-i18n="createBtn">Traçar o rumo</button>
+  </section>
+
+  <!-- ESTADO: folha existente -->
+  <section id="view-folha" class="sheet" hidden>
+
+    <div id="lock-banner" class="banner" role="status"></div>
+
+    <p class="sheet-kicker">
+      <span data-i18n="sheetKicker">Traçado em</span>
+      <span id="created-at" class="mono"></span>
+    </p>
+
+    <!-- Os dois polos -->
+    <div class="meridian">
+      <article class="pole pole-north">
+        <p class="pole-tag" data-i18n="poleNorth">Onde quero chegar</p>
+        <div class="horizon" id="horizon-edit">
+          <span data-i18n="horizonPrefix">Projeção para</span>
+          <input type="number" id="f-horizon-n" min="1" max="999" inputmode="numeric" />
+          <select id="f-horizon-unit" data-units></select>
+          <span class="horizon-date mono" id="horizon-date"></span>
+        </div>
+        <textarea id="f-projecao" data-i18n-ph="poleNorthPh" placeholder="Nesse ponto, quero…"></textarea>
+      </article>
+
+      <div class="meridian-line" aria-hidden="true">
+        <span class="meridian-lock" id="meridian-lock"></span>
+      </div>
+
+      <article class="pole pole-south">
+        <p class="pole-tag" data-i18n="poleSouth">Onde estou agora</p>
+        <textarea id="f-atual" data-i18n-ph="poleSouthPh" placeholder="Hoje, a minha situação é…"></textarea>
+      </article>
+    </div>
+
+    <!-- Necessidades -->
+    <section class="block">
+      <h2 data-i18n="needsTitle">O que preciso de reunir para lá chegar</h2>
+      <p class="prose" data-i18n="needsBody">Informações, conteúdos e conhecimentos concretos. Cada linha é um ponto de passagem no percurso.</p>
+      <ul id="needs-list" class="needs"></ul>
+      <div class="needs-add">
+        <select id="need-type">
+          <option value="informacao" data-i18n="typeInfo">Informação</option>
+          <option value="conteudo" data-i18n="typeContent">Conteúdo</option>
+          <option value="conhecimento" data-i18n="typeKnow">Conhecimento</option>
+        </select>
+        <input type="text" id="need-desc" data-i18n-ph="needDescPh" placeholder="O que é, em concreto?" />
+        <button type="button" id="btn-add-need" class="btn" data-i18n="addNeedBtn">Acrescentar</button>
+      </div>
+    </section>
+
+    <!-- Compromisso -->
+    <section class="block block-commit">
+      <h2 data-i18n="commitTitle">Compromisso</h2>
+      <label class="check">
+        <input type="checkbox" id="f-commit" />
+        <span data-i18n="commitText">Assumo esta direção com responsabilidade e comprometo-me a segui-la até à próxima revisão.</span>
+      </label>
+      <div class="field commit-name">
+        <label for="f-nome" data-i18n="commitNameLabel">Assinado</label>
+        <input type="text" id="f-nome" data-i18n-ph="commitNamePh" placeholder="O teu nome" />
+      </div>
+    </section>
+
+    <div class="sheet-actions no-print">
+      <button type="button" id="btn-save" class="btn btn-primary" data-i18n="saveBtn">Guardar alterações</button>
+      <span id="save-note" class="save-note mono" aria-live="polite"></span>
+    </div>
+
+    <!-- Fora do dia de revisão -->
+    <section class="block no-print" id="between-reviews">
+      <h2 data-i18n="reflectTitle">Entre revisões</h2>
+      <p class="prose" data-i18n="reflectBody">Não podes mudar o rumo hoje, mas podes registar o que estás a observar. Fica no histórico para o dia da revisão.</p>
+      <textarea id="reflect-text" data-i18n-ph="reflectPh" placeholder="O que notaste desde a última revisão?"></textarea>
+      <div class="row">
+        <button type="button" id="btn-reflect" class="btn" data-i18n="reflectBtn">Registar reflexão</button>
+        <button type="button" id="btn-emergency" class="btn btn-ghost" data-i18n="emergencyBtn">Desbloqueio de emergência</button>
+      </div>
+    </section>
+
+    <!-- Histórico -->
+    <section class="block" id="history-block">
+      <h2 data-i18n="historyTitle">Histórico</h2>
+      <ol id="history-list" class="history"></ol>
+    </section>
+
+    <div class="sheet-footer no-print">
+      <div class="field">
+        <label for="cfg-review-day" data-i18n="reviewDayLabel">Dia de revisão de cada mês</label>
+        <input type="number" id="cfg-review-day" min="1" max="28" inputmode="numeric" />
+      </div>
+      <div class="row">
+        <button type="button" id="btn-export" class="btn" data-i18n="exportBtn">Exportar cópia</button>
+        <label class="btn" for="import-file" data-i18n="importBtn">Importar cópia</label>
+        <input type="file" id="import-file" accept="application/json" hidden />
+        <button type="button" id="btn-print" class="btn" data-i18n="printBtn">Imprimir folha A4</button>
+        <button type="button" id="btn-reset" class="btn btn-ghost" data-i18n="resetBtn">Apagar tudo</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="pane-projeto" hidden>
+  <section id="view-projeto" class="sheet">
+
+    <p class="sheet-kicker" id="projeto-kicker"></p>
+    <p class="hint" data-i18n="projSuggestion">Sugestão: faz a coleta à segunda de manhã.</p>
+
+    <!-- Assuntos -->
+    <section class="block block-first">
+      <h2 data-i18n="projTopicsTitle">Assuntos da semana</h2>
+      <p class="prose" data-i18n="projTopicsBody">Os temas que vão centralizar a tua atenção nos próximos dias.</p>
+      <ul id="topics-list" class="needs"></ul>
+      <div class="needs-add">
+        <input type="text" id="topic-desc" data-i18n-ph="projTopicDescPh" placeholder="Em que te vais focar?" />
+        <button type="button" id="btn-add-topic" class="btn" data-i18n="addNeedBtn">Acrescentar</button>
+      </div>
+    </section>
+
+    <!-- Coleta de informação -->
+    <section class="block">
+      <h2 data-i18n="projInfoTitle">Informações da semana</h2>
+      <div id="collect-banner" class="banner"></div>
+      <ul id="info-list" class="needs"></ul>
+      <button type="button" id="btn-collect" class="btn btn-primary" data-i18n="projCollectBtn">Fazer a coleta agora</button>
+    </section>
+
+    <!-- Fila de espera -->
+    <section class="block">
+      <h2 data-i18n="projQueueTitle">Guardar para a próxima coleta</h2>
+      <p class="prose" data-i18n="projQueueBody">Surgiu uma referência nova a meio da semana? Fica aqui em espera — só entra na próxima coleta.</p>
+      <ul id="queue-list" class="needs"></ul>
+      <div class="needs-add">
+        <input type="text" id="queue-desc" data-i18n-ph="projQueuePh" placeholder="Referência para mais tarde…" />
+        <button type="button" id="btn-add-queue" class="btn" data-i18n="projQueueAddBtn">Guardar</button>
+      </div>
+    </section>
+
+    <!-- Histórico -->
+    <section class="block">
+      <h2 data-i18n="historyTitle">Histórico</h2>
+      <ol id="projeto-history-list" class="history"></ol>
+    </section>
+
+    <div class="sheet-footer no-print">
+      <div class="row">
+        <button type="button" id="btn-print-projeto" class="btn" data-i18n="printBtn">Imprimir folha A4</button>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<!-- Modal: coleta -->
+<dialog id="dlg-collect">
+  <form method="dialog">
+    <h2 data-i18n="dlgCollectTitle">Coleta da semana</h2>
+    <p class="prose" data-i18n="dlgCollectBody">Uma linha por referência. É a única vez esta semana que juntas informação de raiz — inclui também o que guardaste da semana passada, se ainda for relevante.</p>
+    <div id="dlg-collect-pending"></div>
+    <textarea id="collect-notes" data-i18n-ph="dlgCollectPh" placeholder="Uma referência por linha…"></textarea>
+    <div class="row">
+      <button value="cancel" class="btn btn-ghost" data-i18n="cancelBtn">Cancelar</button>
+      <button value="ok" class="btn btn-primary" data-i18n="dlgCollectOk">Registar coleta</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Modal: revisão -->
+<dialog id="dlg-review">
+  <form method="dialog">
+    <h2 data-i18n="dlgReviewTitle">Revisão do mês</h2>
+    <p class="prose" data-i18n="dlgReviewBody">Antes de guardar: o que muda e porquê? Isto fica registado como a revisão de hoje.</p>
+    <textarea id="review-notes" data-i18n-ph="dlgReviewPh" placeholder="Nesta revisão decidi…" required></textarea>
+    <div class="row">
+      <button value="cancel" class="btn btn-ghost" data-i18n="cancelBtn">Cancelar</button>
+      <button value="ok" class="btn btn-primary" data-i18n="dlgReviewOk">Registar revisão e guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Modal: emergência -->
+<dialog id="dlg-emergency">
+  <form method="dialog">
+    <h2 data-i18n="dlgEmTitle">Desbloqueio de emergência</h2>
+    <p class="prose" data-i18n="dlgEmBody">A blindagem existe para te proteger da fuga. Só a abre um facto novo real — perda de emprego, uma oportunidade concreta com prazo. Não a abre "mudei de ideias". Descreve o facto: fica no histórico.</p>
+    <textarea id="em-reason" data-i18n-ph="dlgEmPh" placeholder="O facto novo é…" required minlength="40"></textarea>
+    <div class="row">
+      <button value="cancel" class="btn btn-ghost" data-i18n="cancelBtn">Cancelar</button>
+      <button value="ok" class="btn btn-primary" data-i18n="dlgEmOk">Abrir o rumo</button>
+    </div>
+  </form>
+</dialog>
+
+<footer class="page-foot">
+  <p class="mono" data-i18n="footNote">Tudo fica só neste dispositivo. Exporta uma cópia de vez em quando.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
